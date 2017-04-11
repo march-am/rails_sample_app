@@ -10,8 +10,6 @@ class MicropostsController < ApplicationController
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
-      # flash[:danger] = @micropost.errors.full_messages
-      # redirect_to root_url
     end
   end
 
@@ -24,7 +22,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:content, :picture)
     end
 
     def correct_user
